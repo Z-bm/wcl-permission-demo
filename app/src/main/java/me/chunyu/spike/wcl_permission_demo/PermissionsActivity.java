@@ -70,7 +70,25 @@ public class PermissionsActivity extends AppCompatActivity {
 
     // 请求权限兼容低版本
     private void requestPermissions(String... permissions) {
+        
+        // Should we show an explanation?
+        if (ActivityCompat.shouldShowRequestPermissionRationale(thisActivity,
+            Manifest.permission.READ_CONTACTS)) {
+
+        // Show an expanation to the user *asynchronously* -- don't block
+        // this thread waiting for the user's response! After the user
+        // sees the explanation, try again to request the permission.
+
+    } else {
+
+        // No explanation needed, we can request the permission.
+
         ActivityCompat.requestPermissions(this, permissions, PERMISSION_REQUEST_CODE);
+
+        // PERMISSION_REQUEST_CODE is an
+        // app-defined int constant. The callback method gets the
+        // result of the request.
+        }
     }
 
     // 全部权限均已获取
